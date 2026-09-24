@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NexLeads • Sistema Integrado</title>
+<style>
+:root{--bg:#090b10;--panel:#11151d;--border:#242c39;--muted:#8c98ab;--text:#f3f6fb;--purple:#7657ff;--green:#20c973}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 10% 0,#18132b 0,#090b10 34%);font-family:Inter,Arial,sans-serif;color:var(--text);min-height:100vh}
+.wrap{max-width:1180px;margin:auto;padding:30px 20px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}.brand{display:flex;gap:11px;align-items:center;font-size:21px;font-weight:800}.logo{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(135deg,#7657ff,#20cfcd)}.pill{padding:8px 11px;border-radius:999px;border:1px solid #36304d;background:#191627;color:#c3b6ff;font-size:12px;font-weight:700}
+.card{background:linear-gradient(180deg,#121720,#0e1218);border:1px solid var(--border);border-radius:19px;padding:22px;box-shadow:0 18px 55px #0004}.hero{display:grid;grid-template-columns:1.35fr .65fr;gap:15px}.hero h1{font-size:35px;margin:0 0 11px;line-height:1.12}.sub{color:var(--muted);line-height:1.65;font-size:14px}
+.form{display:grid;grid-template-columns:1.4fr .55fr .8fr auto;gap:9px;margin-top:21px}.field label{display:block;color:#8995a7;font-size:11px;margin:0 0 6px 3px}.field input,.field select{width:100%;height:47px;background:#0a0e14;color:white;border:1px solid var(--border);border-radius:12px;padding:0 13px;outline:none;font-size:14px}.btn{height:47px;border:0;border-radius:12px;padding:0 18px;background:linear-gradient(135deg,#7657ff,#5e54f5);color:white;font-weight:800;cursor:pointer}.btn:disabled{opacity:.5}
+.steps{display:grid;gap:10px}.step{padding:14px;border:1px solid var(--border);border-radius:13px;background:#0c1118}.step b{font-size:13px}.step div{font-size:12px;color:#7e899a;margin-top:5px;line-height:1.45}
+#status{display:none;margin-top:13px;padding:12px 13px;border-radius:11px;font-size:12px}.info{display:block!important;background:#131a2b;border:1px solid #293858;color:#c5d8ff}.error{display:block!important;background:#251318;border:1px solid #50262d;color:#ffbec5}
+.profile{display:none;margin-top:16px}.profileTop{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}.handle{color:#aa9cff;font-weight:800}.bio{color:#a2adbc;font-size:13px;line-height:1.55;max-width:720px;margin-top:7px}.green{color:#79e4a2;background:#102219;border:1px solid #235536;padding:7px 10px;border-radius:999px;font-size:11px;font-weight:800}
+.profileGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:16px}.mini{background:#0b1017;border:1px solid var(--border);padding:13px;border-radius:12px}.mini span{font-size:11px;color:#7f8b9c}.mini b{display:block;font-size:13px;margin-top:6px;word-break:break-word}
+.results{margin-top:16px}.resultsHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:11px}.resultsHead h2{font-size:18px;margin:0}.query{font-size:11px;color:#7f8b9c}
+.match{display:grid;grid-template-columns:1.2fr 1.4fr 1fr auto;gap:12px;align-items:center;padding:15px 0;border-bottom:1px solid #202733}.match:last-child{border-bottom:0}.matchName{font-weight:800;font-size:14px}.muted{color:#8793a4;font-size:12px;line-height:1.45;margin-top:4px}.phone{font-weight:800;font-size:14px}.links{display:flex;gap:7px;flex-wrap:wrap}.smallbtn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:#e8edff;border:1px solid #2a3240;background:#151a23;border-radius:9px;padding:9px 11px;font-size:11px;font-weight:800;cursor:pointer}.empty{padding:24px;text-align:center;color:#788596}
+.note{font-size:11px;color:#737f91;line-height:1.6;margin-top:13px}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.form{grid-template-columns:1fr 1fr}.profileGrid{grid-template-columns:1fr 1fr}.match{grid-template-columns:1fr 1fr}}@media(max-width:560px){.form,.profileGrid,.match{grid-template-columns:1fr}.hero h1{font-size:28px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><div class="brand"><div class="logo">N</div>NexLeads</div><div class="pill">Sistema Integrado</div></div>
+  <div class="hero">
+    <div class="card">
+      <h1>Busque o @ e encontre os contatos públicos.</h1>
+      <div class="sub">Digite o @ do Instagram, escolha o estado e, se quiser, a cidade. O sistema consulta o perfil público e procura possíveis correspondências comerciais no Google Places.</div>
+      <div class="form">
+        <div class="field"><label>Instagram</label><input id="handle" placeholder="@nomedoperfil"></div>
+        <div class="field"><label>Estado</label><select id="state"><option value="">UF</option><option>PR</option><option>SP</option><option>SC</option><option>RJ</option><option>MG</option><option>RS</option><option>GO</option><option>MS</option><option>MT</option><option>BA</option><option>PE</option><option>CE</option><option>ES</option><option>DF</option><option>PA</option><option>PB</option><option>RN</option><option>AL</option><option>SE</option><option>PI</option><option>MA</option><option>RO</option><option>AC</option><option>AM</option><option>AP</option><option>RR</option><option>TO</option></select></div>
+        <div class="field"><label>Cidade (opcional)</label><input id="city" placeholder="Ex.: Cianorte"></div>
+        <div class="field"><label>&nbsp;</label><button class="btn" id="go" onclick="searchLead()">Buscar contato</button></div>
+      </div>
+      <div id="status"></div>
+      <div class="note">A busca é voltada a contatos comerciais/profissionais publicados em cadastros de estabelecimentos. Ela não revela telefone pessoal privado.</div>
+    </div>
+    <div class="card"><div class="steps">
+      <div class="step"><b>1. Lê o perfil público</b><div>Obtém o nome público associado ao @ informado.</div></div>
+      <div class="step"><b>2. Usa sua localização</b><div>Adiciona estado e, se você informar, cidade para reduzir homônimos.</div></div>
+      <div class="step"><b>3. Mostra correspondências</b><div>Exibe telefone comercial, endereço, site e Maps quando encontrados.</div></div>
+    </div></div>
+  </div>
+  <div class="card profile" id="profileCard">
+    <div class="profileTop"><div><div class="handle" id="igHandle"></div><h2 id="igName" style="margin:5px 0 0"></h2><div class="bio" id="igBio"></div></div><div class="green">Perfil consultado</div></div>
+    <div class="profileGrid">
+      <div class="mini"><span>Contato no próprio Instagram</span><b id="igContact"></b></div>
+      <div class="mini"><span>Site do Instagram</span><b id="igSite"></b></div>
+      <div class="mini"><span>Categoria</span><b id="igCategory"></b></div>
+      <div class="mini"><span>Nome usado no Google</span><b id="searchName"></b></div>
+    </div>
+  </div>
+  <div class="card results" id="resultsCard" style="display:none"><div class="resultsHead"><h2>Possíveis correspondências no Google</h2><div class="query" id="query"></div></div><div id="matches"></div></div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const show=v=>v||'Não disponível';
+function status(msg,type='info'){const x=$('status');x.textContent=msg;x.className=type}
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+async function searchLead(){
+  const handle=$('handle').value.trim(), state=$('state').value, city=$('city').value.trim();
+  if(!handle){status('Digite o @ do Instagram.','error');return}
+  if(!state){status('Escolha o estado.','error');return}
+  $('go').disabled=true;$('go').textContent='Buscando...';
+  status('Consultando Instagram e procurando correspondências comerciais no Google...','info');
+  $('profileCard').style.display='none';$('resultsCard').style.display='none';
+  try{
+    const r=await fetch('/api/search',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({handle,state,city})});
+    const d=await r.json();
+    if(!r.ok||!d.ok)throw new Error(d.error||'Erro na busca');
+    renderProfile(d.profile);renderMatches(d.matches,d.google_query);
+    status(d.matches.length+' correspondência(s) encontrada(s). Confira nome e endereço antes de usar o contato.','info')
+  }catch(e){status(e.message,'error')}
+  finally{$('go').disabled=false;$('go').textContent='Buscar contato'}
+}
+function renderProfile(p){
+  $('profileCard').style.display='block';
+  $('igHandle').textContent='@'+p.username;$('igName').textContent=show(p.full_name);$('igBio').textContent=show(p.biography);
+  $('igContact').textContent=[p.phone,p.email].filter(Boolean).join(' • ')||'Não disponível';
+  $('igSite').textContent=show(p.website);$('igCategory').textContent=show(p.category);$('searchName').textContent=show(p.full_name)
+}
+function renderMatches(items,q){
+  $('resultsCard').style.display='block';$('query').textContent='Busca: '+q;const box=$('matches');
+  if(!items.length){box.innerHTML='<div class="empty">Nenhuma empresa correspondente encontrada. Tente informar também a cidade ou confirme o nome público do perfil.</div>';return}
+  box.innerHTML=items.map(p=>'<div class="match"><div><div class="matchName">'+esc(p.name||'Sem nome')+'</div><div class="muted">'+esc(p.type||'Estabelecimento')+'</div></div><div><div class="muted">'+esc(p.address||'Endereço não disponível')+'</div></div><div><div class="phone">'+esc(p.phone||p.international_phone||'Telefone não disponível')+'</div><div class="muted">'+esc(p.website||'')+'</div></div><div class="links">'+(p.phone?'<button class="smallbtn" onclick="copyText('+JSON.stringify(p.phone).replace(/"/g,'&quot;')+')">Copiar número</button>':'')+(p.website?'<a class="smallbtn" target="_blank" rel="noopener" href="'+esc(p.website)+'">Site</a>':'')+(p.maps_url?'<a class="smallbtn" target="_blank" rel="noopener" href="'+esc(p.maps_url)+'">Maps</a>':'')+'</div></div>').join('')
+}
+function copyText(v){navigator.clipboard.writeText(v);status('Número copiado.','info')}
+$('handle').addEventListener('keydown',e=>{if(e.key==='Enter')searchLead()})
+</script>
+</body>
+</html>
